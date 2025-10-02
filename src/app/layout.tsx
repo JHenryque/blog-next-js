@@ -24,13 +24,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="pt-BR">
-      <body>
-        <header>Header</header>
-
-        <main>{children}</main>
-
-        <footer>Footer</footer>
-      </body>
+      <body>{children}</body>
     </html>
   );
 }
