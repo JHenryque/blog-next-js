@@ -1,5 +1,18 @@
-"use client";
+import clsx from "clsx";
 
 export default function Headers() {
-  return <h1 onClick={() => console.log("Clicou")}>Home</h1>;
+  return (
+    <header>
+      <h1
+        className={clsx(
+          "text-4xl/normal font-extrabold my-8",
+          "sm:text-5xl/normal sm:my-10",
+          "md:text-6xl/normal md:my-11",
+          "lg:text-7xl/normal lg:my-12"
+        )}
+      >
+        <a href="#">The Blog</a>
+      </h1>
+    </header>
+  );
 }
