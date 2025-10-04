@@ -3,7 +3,10 @@ import { PostRespository } from "./post-repository";
 import { resolve } from "path";
 import { readFile } from "fs/promises";
 
+// routa da raiz do projeto
 const ROOT_DIR = process.cwd();
+
+// rotas do arquivo do post
 const JSON_POSTS_FILE_PATH = resolve(
   ROOT_DIR,
   "src",
@@ -12,15 +15,17 @@ const JSON_POSTS_FILE_PATH = resolve(
   "posts.json"
 );
 
-const SIMULATE_WAIT_IN_MS = 5000;
+const SIMULATE_WAIT_IN_MS = 0;
 
 export class JsonPostRepository implements PostRespository {
+  // simulando o delay
   private async simulateWait() {
     if (SIMULATE_WAIT_IN_MS <= 0) return;
 
     await new Promise((resolve) => setTimeout(resolve, SIMULATE_WAIT_IN_MS));
   }
 
+  // chamando o json de posts
   private async readFromDisk() {
     const jsonContent = await readFile(JSON_POSTS_FILE_PATH, "utf-8");
     const parsedJson = JSON.parse(jsonContent);
@@ -28,6 +33,7 @@ export class JsonPostRepository implements PostRespository {
     return posts;
   }
 
+  // pegar todos os posts
   async findAll(): Promise<PostModel[]> {
     await this.simulateWait();
 
@@ -35,6 +41,7 @@ export class JsonPostRepository implements PostRespository {
     return posts;
   }
 
+  // pegar o post pelo id
   async findById(id: string): Promise<PostModel> {
     await this.simulateWait();
 
