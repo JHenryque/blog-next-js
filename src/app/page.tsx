@@ -1,10 +1,9 @@
 import Container from "@/components/Container";
 import Headers from "@/components/Headers";
+import PostCoverImage from "@/components/PostCoverImage";
 import PostHeading from "@/components/PostHeading.index";
 import { PostsList } from "@/components/PostsList";
 import { SpindLoader } from "@/components/SpinLoader";
-import Image from "next/image";
-import Link from "next/link";
 import { Suspense } from "react";
 
 export default async function HomePage() {
@@ -13,19 +12,19 @@ export default async function HomePage() {
       <Container>
         <Headers />
         <section className="grid grid-cols-1 gap-5 mb-16 sm:grid-cols-2 group">
-          <Link
-            className="w-full h-full overflow-hidden rounded-xl"
-            href="/about"
-          >
-            <Image
-              className="w-full h-full group-hover:scale-105 transition-all object-cover"
-              src="/images/bryen_0.png"
-              width={1200}
-              height={720}
-              alt="Titulo do post"
-              priority
-            />
-          </Link>
+          <PostCoverImage
+            linkProps={{
+              href: "/post/asdfasdf",
+            }}
+            imageProps={{
+              width: 1200,
+              height: 720,
+              src: "/images/bryen_9.png",
+              alt: "Alt da imagem",
+              priority: true,
+            }}
+          />
+
           <div className="flex flex-col gap-4 sm:justify-center">
             <time
               className="text-sm/tight text-slate-500"
