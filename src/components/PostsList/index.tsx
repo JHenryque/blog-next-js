@@ -8,7 +8,7 @@ export async function PostsList() {
       {posts &&
         posts.map((post) => (
           <li key={post.id}>
-            <a href={`/posts/${post.id}`}>{post.title}</a>
+            <a href={`/post/${post.id}`}>{post.title}</a>
           </li>
         ))}
     </ul>
