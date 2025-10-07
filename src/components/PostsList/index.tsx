@@ -1,7 +1,6 @@
 import { postRepository } from "@/repositories/post";
 import PostCoverImage from "../PostCoverImage";
 import PostHeading from "../PostHeading.index";
-import { format } from "path";
 import { formatDatetime, formatRelativeDate } from "@/utils/format-datetime";
 
 export async function PostsList() {
