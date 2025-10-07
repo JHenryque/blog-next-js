@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 //import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
+import Container from "@/components/Container";
+import Headers from "@/components/Headers";
 
 // const geistSans = Geist({
 //   variable: "--font-geist-sans",
@@ -13,7 +15,10 @@ import "./globals.css";
 // }) className={`${geistSans.variable} ${geistMono.variable} antialiased`};
 
 export const metadata: Metadata = {
-  title: "The Blog - Este e um blog con Next.js",
+  title: {
+    default: "The Blog - Este e um blog con Next.js",
+    template: "%s | The Blog",
+  },
   description: "Este e um blog con Next.js",
 };
 
@@ -25,7 +30,13 @@ export default function RootLayout({
   return (
     <html lang="pt-BR" className="light">
       <body className="text-slate-900 bg-slate-400 min-h-screen dark:bg-slate-900 dark:text-slate-50">
-        {children}
+        <Container>
+          <Headers />
+          {children}
+          <footer className="text-3xl font-bold text-white">
+            &copy; Todos os direitos reservados
+          </footer>
+        </Container>
       </body>
     </html>
   );
