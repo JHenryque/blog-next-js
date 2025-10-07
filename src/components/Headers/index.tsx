@@ -12,7 +12,7 @@ export default function Headers() {
           "lg:text-7xl/normal lg:my-12"
         )}
       >
-        <Link href="#">The Blog</Link>
+        <Link href="/">The Blog</Link>
       </h1>
     </header>
   );

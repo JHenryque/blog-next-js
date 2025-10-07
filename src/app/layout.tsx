@@ -30,7 +30,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="pt-BR" className="light">
-      <body className="text-slate-900 bg-slate-400 min-h-screen dark:bg-slate-900 dark:text-slate-50">
+      <body className="text-slate-900 bg-slate-400 dark:bg-slate-900 dark:text-slate-50">
         <Container>
           <Headers />
           {children}
