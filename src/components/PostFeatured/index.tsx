@@ -1,5 +1,6 @@
 import PostCoverImage from "../PostCoverImage";
 import PostHeading from "../PostHeading.index";
+import { PostSummary } from "../PostSummary";
 
 export function PostFeatured() {
   const slug = "asdfasdf";
@@ -19,21 +20,13 @@ export function PostFeatured() {
         }}
       />
 
-      <div className="flex flex-col gap-4 sm:justify-center">
-        <time className="text-sm/tight text-slate-500" dateTime="2025-10-05">
-          05/04/2025 - 10:00 {""}
-        </time>
-        <PostHeading url={postLink} as="h1">
-          Lorem ipsum dolor sit amet
-        </PostHeading>
-
-        <p>
-          Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sapiente,
-          sequi quod obcaecati harum aut quaerat commodi asperiores repudiandae
-          necessitatibus numquam? Voluptatem consequatur quae dolorem itaque hic
-          fugiat atque placeat tempore.
-        </p>
-      </div>
+      <PostSummary
+        postHeading="h1"
+        postLink={postLink}
+        createdAt="2025-10-05"
+        title="Lorem ipsum dolor sit amet"
+        excerpt="Lorem ipsum dolor sit amet consectetur adipisicing elit. Quasi, autem."
+      />
     </section>
   );
 }
