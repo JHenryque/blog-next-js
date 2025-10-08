@@ -23,9 +23,9 @@ export async function SinglePost({ slug }: SimglePostProps) {
           alt={post.title}
           className="rounded-xl"
         />
-        <p className="flex justify-between text-slate-500">
+        <div className="flex justify-between text-slate-500">
           {<PostDate dateTime={post.createdAt} />} {post.author}
-        </p>
+        </div>
         <PostHeading url={""}>{post.title}</PostHeading>
       </header>
       <p className="text-xl mb-4 text-slate-600">{post.excerpt}</p>
