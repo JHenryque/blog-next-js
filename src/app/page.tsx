@@ -1,5 +1,3 @@
-import Container from "@/components/Container";
-import Headers from "@/components/Headers";
 import { PostFeatured } from "@/components/PostFeatured";
 import { PostsList } from "@/components/PostsList";
 import { SpindLoader } from "@/components/SpinLoader";

@@ -1,13 +1,26 @@
 import { PostSummary } from "@/components/PostSummary";
 import { findAllBySlugPostsCached } from "@/lib/post/queries";
+import { Metadata } from "next";
 import Link from "next/link";
 
 type PostSlugPageParams = {
   params: Promise<{ slug: string }>;
 };
 
+export async function generateMetadata({
+  params,
+}: PostSlugPageParams): Promise<Metadata> {
+  const { slug } = await params;
+  const post = await findAllBySlugPostsCached(slug);
+  return {
+    title: post.title,
+    description: post.excerpt,
+  };
+}
+
 export default async function PostSlugPage({ params }: PostSlugPageParams) {
   const { slug } = await params;
+  const post = await findAllBySlugPostsCached(slug);
 
   // varia forma de pegar o post pelo slug
   // let post;
@@ -20,7 +33,6 @@ export default async function PostSlugPage({ params }: PostSlugPageParams) {
 
   // const post = await findAllBySlugPostsCached(slug).catch(() => undefined);
   // if (!post) notFound();
-  const post = await findAllBySlugPostsCached(slug);
 
   return (
     <section>
