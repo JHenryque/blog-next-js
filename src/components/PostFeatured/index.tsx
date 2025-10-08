@@ -5,7 +5,6 @@ import { findAllPublicPostsCached } from "@/lib/post/queries";
 export async function PostFeatured() {
   const posts = await findAllPublicPostsCached();
   const post = posts[0];
-  if (!post) throw new Error("Post not found");
   const postLink = `/post/${post.slug}`;
 
   return (

@@ -1,4 +1,3 @@
-import { formatDatetime, formatRelativeDate } from "@/utils/format-datetime";
 import PostHeading from "../PostHeading.index";
 import { PostDate } from "../PostDate";
 
