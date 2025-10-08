@@ -1,8 +1,6 @@
 import { PostSummary } from "@/components/PostSummary";
 import { findAllBySlugPostsCached } from "@/lib/post/queries";
-import { formatDatetime } from "@/utils/format-datetime";
 import Link from "next/link";
-import { notFound } from "next/navigation";
 
 type PostSlugPageParams = {
   params: Promise<{ slug: string }>;
@@ -11,16 +9,18 @@ type PostSlugPageParams = {
 export default async function PostSlugPage({ params }: PostSlugPageParams) {
   const { slug } = await params;
 
-  let post;
+  // varia forma de pegar o post pelo slug
+  // let post;
+  // try {
+  //   post = await findAllBySlugPostsCached(slug);
+  // } catch (error) {
+  //   //throw new Error(`Post with slug ${slug} not found`);
+  //   post = undefined;
+  // }
 
-  try {
-    post = await findAllBySlugPostsCached(slug);
-  } catch (error) {
-    //throw new Error(`Post with slug ${slug} not found`);
-    post = undefined;
-  }
-
-  if (!post) notFound();
+  // const post = await findAllBySlugPostsCached(slug).catch(() => undefined);
+  // if (!post) notFound();
+  const post = await findAllBySlugPostsCached(slug);
 
   return (
     <section>
