@@ -4,6 +4,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { PostDate } from "../PostDate";
 import PostHeading from "../PostHeading.index";
+import SafeMarkDown from "../SafeMarkDown";
 
 type SimglePostProps = {
   slug: string;
@@ -28,7 +29,8 @@ export async function SinglePost({ slug }: SimglePostProps) {
         <PostHeading url={""}>{post.title}</PostHeading>
       </header>
       <p className="text-xl mb-4 text-slate-600">{post.excerpt}</p>
-      <p className="text-lg text-slate-600 pb-8">{post.content}</p>
+
+      <SafeMarkDown markdown={post.content} />
     </article>
   );
 }
