@@ -1,6 +1,9 @@
 import { findAllBySlugPostsCached } from "@/lib/post/queries";
 import { PostSummary } from "../PostSummary";
 import Link from "next/link";
+import Image from "next/image";
+import { PostDate } from "../PostDate";
+import PostHeading from "../PostHeading.index";
 
 type SimglePostProps = {
   slug: string;
@@ -9,22 +12,23 @@ type SimglePostProps = {
 export async function SinglePost({ slug }: SimglePostProps) {
   const post = await findAllBySlugPostsCached(slug);
   return (
-    <section>
+    <article>
       <Link href="/">Voltar</Link>
-      <div>
-        <img src={post.coverImageUrl} alt={post.title} />
-
-        <PostSummary
-          postHeading="h1"
-          postLink={`/post/${post.slug}`}
-          createdAt={post.createdAt}
-          title={post.title}
-          excerpt={post.excerpt}
+      <header className="group flex flex-col gap-4 mb-4">
+        <Image
+          width={1200}
+          height={720}
+          src={post.coverImageUrl}
+          alt={post.title}
+          className="rounded-xl"
         />
-
-        <p>{post.content}</p>
-        <p>{post.author}</p>
-      </div>
-    </section>
+        <p className="flex justify-between text-slate-500">
+          {<PostDate dateTime={post.createdAt} />} {post.author}
+        </p>
+        <PostHeading url={""}>{post.title}</PostHeading>
+      </header>
+      <p className="text-xl mb-4 text-slate-600">{post.excerpt}</p>
+      <p className="text-lg text-slate-600 pb-8">{post.content}</p>
+    </article>
   );
 }
