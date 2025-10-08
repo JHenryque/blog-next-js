@@ -1,5 +1,4 @@
 import { findAllBySlugPostsCached } from "@/lib/post/queries";
-import { PostSummary } from "../PostSummary";
 import Link from "next/link";
 import Image from "next/image";
 import { PostDate } from "../PostDate";
