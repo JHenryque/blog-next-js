@@ -5,8 +5,9 @@ import { findAllPublicPostsCached } from "@/lib/post/queries";
 export async function PostFeatured() {
   const posts = await findAllPublicPostsCached();
   const post = posts[0];
-
+  if (!post) throw new Error("Post not found");
   const postLink = `/post/${post.slug}`;
+
   return (
     <section className="grid grid-cols-1 gap-5 mb-16 sm:grid-cols-2 group">
       <PostCoverImage
