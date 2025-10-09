@@ -1,3 +1,4 @@
+import { createImageSrc } from "@/utils/create-image-src";
 import PostCoverImage from "../PostCoverImage";
 import { PostSummary } from "../PostSummary";
 import { findAllPublicPostsCached } from "@/lib/post/queries";
@@ -19,7 +20,7 @@ export async function PostsList() {
               imageProps={{
                 width: 1200,
                 height: 720,
-                src: post.coverImageUrl,
+                src: createImageSrc(post.coverImageUrl),
                 alt: post.title,
               }}
             />
