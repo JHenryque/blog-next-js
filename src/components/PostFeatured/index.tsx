@@ -1,4 +1,3 @@
-import { createImageSrc } from "@/utils/create-image-src";
 import PostCoverImage from "../PostCoverImage";
 import { PostSummary } from "../PostSummary";
 import { findAllPublicPostsCached } from "@/lib/post/queries";
