@@ -4,7 +4,6 @@ import Image from "next/image";
 import { PostDate } from "../PostDate";
 import PostHeading from "../PostHeading.index";
 import SafeMarkDown from "../SafeMarkDown";
-import { createImageSrc } from "@/utils/create-image-src";
 
 type SimglePostProps = {
   slug: string;
@@ -19,7 +18,7 @@ export async function SinglePost({ slug }: SimglePostProps) {
         <Image
           width={1200}
           height={720}
-          src={createImageSrc(post.coverImageUrl)}
+          src={post.coverImageUrl}
           alt={post.title}
           className="rounded-xl"
         />
