@@ -1,0 +1,13 @@
+{
+  "version": "7",
+  "dialect": "sqlite",
+  "entries": [
+    {
+      "idx": 0,
+      "version": "6",
+      "when": 1760135466544,
+      "tag": "0000_uneven_paladin",
+      "breakpoints": true
+    }
+  ]
+}
