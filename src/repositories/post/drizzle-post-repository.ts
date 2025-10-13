@@ -1,6 +1,7 @@
 import { PostModel } from "@/models/post/post-model";
 import { PostRespository } from "./post-repository";
 import { drizzleDb } from "@/db/drizzle";
+import { notFound } from "next/navigation";
 
 export class DrizzlePostRepository implements PostRespository {
   async findAllPublic(): Promise<PostModel[]> {
@@ -40,7 +41,7 @@ export class DrizzlePostRepository implements PostRespository {
       where: (posts, { eq }) => eq(posts.id, id),
     });
 
-    if (!post) throw new Error("Post not found");
+    if (!post) notFound();
 
     return post;
   }
