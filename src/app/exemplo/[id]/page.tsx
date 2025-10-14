@@ -1,4 +1,5 @@
 import { revalidateExampleAction } from "@/actions/revalidate-example";
+import { formatHourCached } from "@/utils/format-datetime";
 
 export const dynamic = "force-static";
 export const revalidate = 10;
@@ -10,10 +11,7 @@ export default async function ExemploDynamicPage({
 }) {
   const { id } = await params;
 
-  const hour = new Date().toLocaleTimeString("pt-BR", {
-    hour: "2-digit",
-    minute: "2-digit",
-  });
+  const hour = await formatHourCached();
 
   return (
     <main className="min-h-[600px] text-4xl font-bold">
