@@ -1,14 +1,15 @@
-import PostCoverImage from "../PostCoverImage";
-import { PostSummary } from "../PostSummary";
-import { findAllPublicPostsCached } from "@/lib/post/queries";
+import { PostCoverImage } from '../PostCoverImage';
+import { PostSummary } from '../PostSummary';
+import { findAllPublicPostsCached } from '@/lib/post/queries/public';
 
 export async function PostFeatured() {
   const posts = await findAllPublicPostsCached();
   const post = posts[0];
+
   const postLink = `/post/${post.slug}`;
 
   return (
-    <section className="grid grid-cols-1 gap-5 mb-16 sm:grid-cols-2 group">
+    <section className='grid grid-cols-1 gap-8 mb-16 sm:grid-cols-2 group'>
       <PostCoverImage
         linkProps={{
           href: postLink,
@@ -17,17 +18,17 @@ export async function PostFeatured() {
           width: 1200,
           height: 720,
           src: post.coverImageUrl,
-          alt: post.slug,
+          alt: post.title,
           priority: true,
         }}
       />
 
       <PostSummary
-        postHeading="h1"
         postLink={postLink}
+        postHeading='h1'
         createdAt={post.createdAt}
-        title={post.title}
         excerpt={post.excerpt}
+        title={post.title}
       />
     </section>
   );

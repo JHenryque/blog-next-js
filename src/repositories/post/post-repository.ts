@@ -1,9 +1,8 @@
-import { PostModel } from "@/models/post/post-model";
+import { PostModel } from '@/models/post/post-model';
 
-export interface PostRespository {
+export interface PostRepository {
   findAllPublic(): Promise<PostModel[]>;
+  findBySlugPublic(slug: string): Promise<PostModel>;
   findAll(): Promise<PostModel[]>;
   findById(id: string): Promise<PostModel>;
-  findBySlug(id: string): Promise<PostModel>;
-  findBySlugPublic(slug: string): Promise<PostModel>;
 }

@@ -1,9 +1,2 @@
-@import "tailwindcss";
-
+@import 'tailwindcss';
 @plugin "@tailwindcss/typography";
-
-@custom-variant dark (&:where(.dark, .dark *));
-
-body {
-  font-family: Arial, Helvetica, sans-serif;
-}

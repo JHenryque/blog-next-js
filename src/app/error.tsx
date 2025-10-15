@@ -1,7 +1,7 @@
-"use client";
+'use client';
 
-import ErrorMessage from "@/components/ErrorMessage";
-import { useEffect } from "react";
+import ErrorMessage from '@/components/ErrorMessage';
+import { useEffect } from 'react';
 
 type RootErrorPageProps = {
   error: Error;
@@ -10,13 +10,14 @@ type RootErrorPageProps = {
 
 export default function RootErrorPage({ error }: RootErrorPageProps) {
   useEffect(() => {
-    //console.error(error);
+    console.log(error);
   }, [error]);
+
   return (
     <ErrorMessage
-      pageTile="Internal Server Error"
-      contentTitle="501"
-      content="Ocorreu um erro interno no servidor. tente novamente mais tarde"
+      pageTitle='Internal Server Error'
+      contentTitle='501'
+      content='Ocorreu um erro do qual nossa aplicação não conseguiu ser recuperar. Tente novamente mais tarde.'
     />
   );
 }

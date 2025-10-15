@@ -1,15 +1,11 @@
-import ErrorMessage from "@/components/ErrorMessage";
-import { Metadata } from "next";
+import ErrorMessage from '@/components/ErrorMessage';
 
-export const metadata: Metadata = {
-  title: "Página não encontrada! :(",
-};
 export default function NotFoundPage() {
   return (
     <ErrorMessage
-      pageTile="Página não encontrada"
-      contentTitle="404"
-      content="A página não foi encontrada ou não existe"
+      pageTitle='Página não encontrada'
+      contentTitle='404'
+      content='Erro 404 - A página que você está tentando acessar não existe neste site.'
     />
   );
 }

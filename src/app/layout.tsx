@@ -1,41 +1,32 @@
-import type { Metadata } from "next";
-//import { Geist, Geist_Mono } from "next/font/google";
-import "./globals.css";
-import Container from "@/components/Container";
-import Headers from "@/components/Headers";
-import { Footer } from "@/components/Footer";
-
-// const geistSans = Geist({
-//   variable: "--font-geist-sans",
-//   subsets: ["latin"],
-// });
-
-// const geistMono = Geist_Mono({
-//   variable: "--font-geist-mono",
-//   subsets: ["latin"],
-// }) className={`${geistSans.variable} ${geistMono.variable} antialiased`};
+import type { Metadata } from 'next';
+import './globals.css';
+import { Container } from '@/components/Container';
+import { Header } from '@/components/Header';
+import { Footer } from '@/components/Footer';
 
 export const metadata: Metadata = {
   title: {
-    default: "The Blog - Este e um blog con Next.js",
-    template: "%s | The Blog",
+    default: 'The blog - Este é um blog com Next.js',
+    template: '%s | The Blog',
   },
-  description: "Este e um blog con Next.js",
+  description: 'Essa seria a descrição dessa página.',
 };
 
-export default function RootLayout({
-  children,
-}: Readonly<{
+type RootLayoutProps = {
   children: React.ReactNode;
-}>) {
+};
+
+export default function RootLayout({ children }: Readonly<RootLayoutProps>) {
   return (
-    <html lang="pt-BR" className="light">
-      <body className="text-slate-900 bg-slate-400 dark:bg-slate-900 dark:text-slate-50">
+    <html lang='pt-BR'>
+      <body>
         <Container>
-          <Headers />
+          <Header />
+
           {children}
+
+          <Footer />
         </Container>
-        <Footer />
       </body>
     </html>
   );

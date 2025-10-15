@@ -1,48 +1,32 @@
-import { SinglePost } from "@/components/SimglePost";
-import { SpindLoader } from "@/components/SpinLoader";
-import { findAllBySlugPostsCached } from "@/lib/post/queries";
-import { Metadata } from "next";
-import { Suspense } from "react";
+import { SinglePost } from '@/components/SinglePost';
+import { SpinLoader } from '@/components/SpinLoader';
+import { findPublicPostBySlugCached } from '@/lib/post/queries/public';
+import { Metadata } from 'next';
+import { Suspense } from 'react';
 
-type PostSlugPageParams = {
+export const dynamic = 'force-static';
+
+type PostSlugPageProps = {
   params: Promise<{ slug: string }>;
 };
 
 export async function generateMetadata({
   params,
-}: PostSlugPageParams): Promise<Metadata> {
+}: PostSlugPageProps): Promise<Metadata> {
   const { slug } = await params;
-  const post = await findAllBySlugPostsCached(slug);
+  const post = await findPublicPostBySlugCached(slug);
+
   return {
     title: post.title,
     description: post.excerpt,
   };
 }
 
-// export async function generateStaticParams() {
-//   const posts = await findAllPublicPostsCached();
-//   return posts.map((post) => ({
-//     slug: post.slug,
-//   }));
-// }
-
-export default async function PostSlugPage({ params }: PostSlugPageParams) {
+export default async function PostSlugPage({ params }: PostSlugPageProps) {
   const { slug } = await params;
 
-  // varia forma de pegar o post pelo slug
-  // let post;
-  // try {
-  //   post = await findAllBySlugPostsCached(slug);
-  // } catch (error) {
-  //   //throw new Error(`Post with slug ${slug} not found`);
-  //   post = undefined;
-  // }
-
-  // const post = await findAllBySlugPostsCached(slug).catch(() => undefined);
-  // if (!post) notFound();
-
   return (
-    <Suspense fallback={<SpindLoader />}>
+    <Suspense fallback={<SpinLoader className='min-h-20 mb-16' />}>
       <SinglePost slug={slug} />
     </Suspense>
   );

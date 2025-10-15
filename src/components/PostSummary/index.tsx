@@ -1,14 +1,15 @@
-import PostHeading from "../PostHeading.index";
-import { PostDate } from "../PostDate";
+import { PostHeading } from '../PostHeading';
+import { PostDate } from '../PostDate';
 
 type PostSummaryProps = {
-  postHeading: "h1" | "h2";
+  postHeading: 'h1' | 'h2';
   postLink: string;
   createdAt: string;
   title: string;
   excerpt: string;
 };
-export function PostSummary({
+
+export async function PostSummary({
   postHeading,
   postLink,
   createdAt,
@@ -16,10 +17,10 @@ export function PostSummary({
   excerpt,
 }: PostSummaryProps) {
   return (
-    <div className="flex flex-col gap-4 sm:justify-center">
+    <div className='flex flex-col gap-4 sm:justify-center'>
       <PostDate dateTime={createdAt} />
 
-      <PostHeading url={postLink} as={postHeading}>
+      <PostHeading as={postHeading} url={postLink}>
         {title}
       </PostHeading>
 

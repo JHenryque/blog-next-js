@@ -1,17 +1,17 @@
-import PostCoverImage from "../PostCoverImage";
-import { PostSummary } from "../PostSummary";
-import { findAllPublicPostsCached } from "@/lib/post/queries";
+import { findAllPublicPostsCached } from '@/lib/post/queries/public';
+import { PostCoverImage } from '../PostCoverImage';
+import { PostSummary } from '../PostSummary';
 
 export async function PostsList() {
   const posts = await findAllPublicPostsCached();
 
   return (
-    <div className="grid grid-col-1 gap-8 sm:grid-cols-2 lg:grid-cols-3">
-      {posts.slice(1).map((post) => {
+    <div className='grid grid-cols-1 mb-16 gap-8 sm:grid-cols-2 lg:grid-cols-3'>
+      {posts.slice(1).map(post => {
         const postLink = `/post/${post.slug}`;
 
         return (
-          <div className="flex flex-col gap-4 group" key={post.id}>
+          <div className='flex flex-col gap-4 group' key={post.id}>
             <PostCoverImage
               linkProps={{
                 href: postLink,
@@ -25,35 +25,12 @@ export async function PostsList() {
             />
 
             <PostSummary
-              postHeading="h2"
               postLink={postLink}
+              postHeading='h2'
               createdAt={post.createdAt}
-              title={post.title}
               excerpt={post.excerpt}
+              title={post.title}
             />
-
-            {/* <div className="flex flex-col gap-4 sm:justify-center">
-              <time
-                className="text-sm/tight text-slate-500 "
-                dateTime={post.createdAt}
-                title={post.createdAt && formatRelativeDate(post.createdAt)}
-              >
-                <div className="flex gap-1 justify-between">
-                  <span>
-                    {post.createdAt && formatDatetime(post.createdAt)}
-                  </span>
-                  <span>
-                    {post.createdAt && formatRelativeDate(post.createdAt)}
-                  </span>
-                </div>
-              </time>
-
-              <PostHeading url={postLink} as="h2">
-                {post.title}
-              </PostHeading>
-
-              <p>{post.excerpt}</p>
-            </div> */}
           </div>
         );
       })}

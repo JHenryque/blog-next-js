@@ -1,6 +1,6 @@
-import { JsonPostRepository } from "@/repositories/post/json-post-repository";
-import { drizzleDb } from ".";
-import { postsTable } from "./schema";
+import { JsonPostRepository } from '@/repositories/post/json-post-repository';
+import { drizzleDb } from '.';
+import { postsTable } from './schemas';
 
 (async () => {
   const jsonPostRepository = new JsonPostRepository();
@@ -13,12 +13,11 @@ import { postsTable } from "./schema";
     console.log();
     console.log(`${posts.length} posts foram salvos na base de dados.`);
     console.log();
-
-    //    const posts = await drizzleDb.select().from(postsTable);
-    //    posts.forEach(post => {
-    //     console.log(post.slug);
-    //   });
-  } catch (error) {
-    console.log("\n", "Ocorreu unm erro ao inserir os posts \n", error);
+  } catch (e) {
+    console.log();
+    console.log('Ocorreu um erro...');
+    console.log();
+    console.log(e);
+    console.log();
   }
 })();
